@@ -46,4 +46,4 @@ if __name__ == "__main__":
         print('oh shit')
         start_server()
     else:
-        run_this_shit(results.port, results.ip_address)
+        start_client(results.port, results.ip_address)
