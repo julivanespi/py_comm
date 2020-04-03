@@ -20,8 +20,9 @@ class py_comm_server:
         while True:
             c, addr = s.accept()
             print('[INFO] Got connection from', addr)
-            c.close()
-            break
+            data = c.recv(1024)
+            print(data)
+            # c.close()
 
 
 if __name__ == "__main__":

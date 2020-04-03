@@ -27,8 +27,8 @@ class py_comm_client:
         print(self.server_addr)
         s.connect((self.server_addr, self.port))
         print('[INFO] Connected to server')
-
-        s.close()
+        s.send(b'[M_CLIENT] THANKS HOMIE')
+        # s.close()
 
 
 if __name__ == "__main__":
