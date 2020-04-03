@@ -19,17 +19,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     parser.add_argument('-p', action='store',
+                        type=int,
                         dest='port',
                         help='Store the port to connect to')
 
     parser.add_argument('-a', action='store',
                         dest='ip_address',
                         help='Store the ip_address to connect to')
-
-    parser.add_argument('-t', action='store_const',
-                        dest='constant_value',
-                        const='value-to-store',
-                        help='Store a constant value')
 
     parser.add_argument('--version', action='version',
                         version='%(prog)s 1.0')

@@ -15,18 +15,18 @@ class py_comm_client:
         except:
             print('[ERROR] Could not create socket')
 
-        try:
-            print(self.port)
-            print(self.server_addr)
-            s.connect((self.server_addr, self.port))
-            print('[INFO] Connected to server')
-        except:
-            print('[ERROR] Had trouble connecting to server. Please check firewall')
+        # try:
+        #     print(self.port)
+        #     print(self.server_addr)
+        #     s.connect((self.server_addr, self.port))
+        #     print('[INFO] Connected to server')
+        # except:
+        #     print('[ERROR] Had trouble connecting to server. Please check firewall')
 
-        # print(self.port)
-        # print(self.server_addr)
-        # s.connect((self.server_addr, self.port))
-        # print('[INFO] Connected to server')
+        print(self.port)
+        print(self.server_addr)
+        s.connect((self.server_addr, self.port))
+        print('[INFO] Connected to server')
 
         s.close()
 
