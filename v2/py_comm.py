@@ -1,56 +1,49 @@
 import argparse
-from py_comm_server import py_comm_server as pcs
+import sys
+from py_comm_server import py_comm_server
+from py_comm_client import py_comm_client
 
 
-def run_this_shit():
-    pass
+def start_server():
+    print('This is a server brehhh')
+    pcs = py_comm_server()
+
+
+def start_client(port, ip_address):
+    #print('The port is: ' + port)
+    #print('The server address is: ' + ip_address)
+    pcc = py_comm_client(port, ip_address)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('-s', action='store',
-                        dest='simple_value',
-                        help='Store a simple value')
+    parser.add_argument('-p', action='store',
+                        dest='port',
+                        help='Store the port to connect to')
 
-    parser.add_argument('-c', action='store_const',
+    parser.add_argument('-a', action='store',
+                        dest='ip_address',
+                        help='Store the ip_address to connect to')
+
+    parser.add_argument('-t', action='store_const',
                         dest='constant_value',
                         const='value-to-store',
                         help='Store a constant value')
 
-    parser.add_argument('-t', action='store_true',
-                        default=False,
-                        dest='boolean_t',
-                        help='Set a switch to true')
-
-    parser.add_argument('-f', action='store_false',
-                        default=True,
-                        dest='boolean_f',
-                        help='Set a switch to false')
-
-    parser.add_argument('-a', action='append',
-                        dest='collection',
-                        default=[],
-                        help='Add repeated values to a list')
-
-    parser.add_argument('-A', action='append_const',
-                        dest='const_collection',
-                        const='value-1-to-append',
-                        default=[],
-                        help='Add different values to list')
-
-    parser.add_argument('-B', action='append_const',
-                        dest='const_collection',
-                        const='value-2-to-append',
-                        help='Add different values to list')
-
     parser.add_argument('--version', action='version',
                         version='%(prog)s 1.0')
 
+    parser.add_argument('-i', metavar='in-file',
+                        type=argparse.FileType('rt'))
+
+    parser.add_argument('-o', metavar='out-file',
+                        type=argparse.FileType('wt'))
+
     results = parser.parse_args()
 
-    print('simple_value     = {!r}'.format(results.simple_value))
-
-    #print('This is what I input as arg:', results.simple_value)
-
-    run_this_shit()
+    if not len(sys.argv) > 1:
+        print('oh shit')
+        start_server()
+    else:
+        run_this_shit(results.port, results.ip_address)
